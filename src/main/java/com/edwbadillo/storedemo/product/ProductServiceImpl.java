@@ -101,7 +101,7 @@ public class ProductServiceImpl implements ProductService {
 
 
     @Override
-    public void delete(Integer id) {
+    public void deleteById(Integer id) {
         // TODO: Check if product is in use or add soft delete
         productRepository.deleteById(id);
     }

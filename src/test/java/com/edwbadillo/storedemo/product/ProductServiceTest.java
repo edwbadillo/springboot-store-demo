@@ -290,9 +290,9 @@ public class ProductServiceTest {
     }
 
     @Test
-    void shouldDeleteProduct() {
+    void shouldDeleteByIdProduct() {
         doNothing().when(productRepository).deleteById(product.getId());
-        service.delete(product.getId());
+        service.deleteById(product.getId());
         verify(productRepository, times(1)).deleteById(product.getId());
     }
 
