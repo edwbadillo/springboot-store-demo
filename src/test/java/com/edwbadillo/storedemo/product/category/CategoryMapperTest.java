@@ -24,11 +24,7 @@ public class CategoryMapperTest {
     void setup() {
         categoryMapper = new CategoryMapper();
 
-        category = new Category();
-        category.setId(1);
-        category.setName("Smartphone");
-        category.setDescription("This is a test description");
-        category.setActive(true);
+        category = new Category(1, "Smartphone", "This is a test description", true);
     }
 
     @Test
