@@ -1,5 +1,6 @@
 package com.edwbadillo.storedemo.product.category;
 
+import com.edwbadillo.storedemo.product.Product;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -123,5 +124,29 @@ public class CategoryRepositoryTests {
         categoryRepository.deleteById(category.getId());
         categoryRepository.flush();
         assertTrue(categoryRepository.findById(category.getId()).isEmpty());
+    }
+
+    @Test
+    void shouldExistsById() {
+        Category category = new Category();
+        category.setName("category1");
+        categoryRepository.save(category);
+        categoryRepository.flush();
+        assertTrue(categoryRepository.existsById(category.getId()));
+        assertFalse(categoryRepository.existsById(category.getId() + 1));
+    }
+
+    @Test
+    void shouldHasProducts() {
+        Category category = new Category();
+        category.setName("category1");
+        categoryRepository.save(category);
+        categoryRepository.flush();
+        assertFalse(categoryRepository.hasProducts(category.getId()));
+
+        Product product = new Product("Product1", "Description", category);
+        em.persist(product);
+
+        assertTrue(categoryRepository.hasProducts(category.getId()));
     }
 }
