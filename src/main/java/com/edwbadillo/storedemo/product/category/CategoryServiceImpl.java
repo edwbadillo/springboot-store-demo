@@ -51,7 +51,7 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public CategoryDetails update(CategoryData data, Integer id) {
+    public CategoryDetails update(Integer id, CategoryData data) {
         if (repository.existsByNameIgnoreCaseAndIdNot(data.name(), id)) {
             throw new InvalidDataException("already_exists", "name", "Name already exists", data.name());
         }

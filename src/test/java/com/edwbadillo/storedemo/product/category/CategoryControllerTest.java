@@ -168,7 +168,7 @@ public class CategoryControllerTest {
                 true
         );
 
-        when(employeeService.update(any(CategoryData.class), anyInt())).thenReturn(categoryDetails);
+        when(employeeService.update(anyInt(), any(CategoryData.class))).thenReturn(categoryDetails);
 
         String jsonData = new ObjectMapper().writeValueAsString(data);
 
@@ -193,7 +193,7 @@ public class CategoryControllerTest {
                 true
         );
 
-        when(employeeService.update(any(CategoryData.class), anyInt()))
+        when(employeeService.update(anyInt(), any(CategoryData.class)))
                 .thenThrow(new InvalidDataException(
                         "already_exists",
                         "name",
@@ -224,7 +224,7 @@ public class CategoryControllerTest {
                 true
         );
 
-        when(employeeService.update(any(CategoryData.class), anyInt()))
+        when(employeeService.update(anyInt(), any(CategoryData.class)))
                 .thenThrow(new CategoryNotFoundException("Category 1 not found"));
 
         String jsonData = new ObjectMapper().writeValueAsString(data);

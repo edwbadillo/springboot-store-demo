@@ -44,12 +44,12 @@ public interface CategoryService {
     /**
      * Updates an existing category.
      *
-     * @param data {@link CategoryData}
      * @param id the id of the category to update
+     * @param data {@link CategoryData}
      * @return {@link CategoryDetails}
      * @throws InvalidDataException if the category already exists by name
      */
-    CategoryDetails update(CategoryData data, Integer id);
+    CategoryDetails update(Integer id, CategoryData data);
 
     /**
      * Deletes an existing category.

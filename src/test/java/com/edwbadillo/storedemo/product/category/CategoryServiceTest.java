@@ -179,7 +179,7 @@ public class CategoryServiceTest {
                 ));
         doNothing().when(mapper).updateEntity(data, category);
 
-        CategoryDetails categoryDetails = service.update(data, category.getId());
+        CategoryDetails categoryDetails = service.update(category.getId(), data);
 
         verify(mapper, times(1)).updateEntity(data, category);
         assertEquals(1, categoryDetails.id());
@@ -199,7 +199,7 @@ public class CategoryServiceTest {
         when(repository.existsByNameIgnoreCaseAndIdNot(data.name(), category.getId())).thenReturn(true);
 
         InvalidDataException exception = assertThrows(
-                InvalidDataException.class, () -> service.update(data, category.getId())
+                InvalidDataException.class, () -> service.update(category.getId(), data)
         );
 
         assertEquals("already_exists", exception.getType());
@@ -219,7 +219,7 @@ public class CategoryServiceTest {
         when(repository.findById(category.getId())).thenReturn(Optional.empty());
 
         CategoryNotFoundException exception = assertThrows(
-                CategoryNotFoundException.class, () -> service.update(data, category.getId())
+                CategoryNotFoundException.class, () -> service.update(category.getId(), data)
         );
 
         assertEquals("Category " + category.getId() + " not found", exception.getMessage());
