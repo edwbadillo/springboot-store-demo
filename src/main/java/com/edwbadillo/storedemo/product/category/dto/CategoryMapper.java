@@ -29,7 +29,7 @@ public class CategoryMapper {
         Category category = new Category();
         category.setName(data.name());
         category.setDescription(data.description());
-        category.setIsActive(data.isActive());
+        category.setActive(data.isActive());
         return category;
     }
 
@@ -38,7 +38,7 @@ public class CategoryMapper {
             category.getId(),
             category.getName(),
             category.getDescription(),
-            category.getIsActive()
+            category.isActive()
         );
     }
 
@@ -46,13 +46,13 @@ public class CategoryMapper {
         return new CategoryInfo(
             category.getId(),
             category.getName(),
-            category.getIsActive()
+            category.isActive()
         );
     }
 
     public void updateEntity(CategoryData data, Category category) {
         category.setName(data.name());
         category.setDescription(data.description());
-        category.setIsActive(data.isActive());
+        category.setActive(data.isActive());
     }
 }

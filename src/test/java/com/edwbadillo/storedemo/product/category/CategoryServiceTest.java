@@ -46,7 +46,7 @@ public class CategoryServiceTest {
         category.setId(1);
         category.setName("smartphone");
         category.setDescription("Smartphone category description");
-        category.setIsActive(true);
+        category.setActive(true);
     }
 
 
@@ -61,7 +61,7 @@ public class CategoryServiceTest {
                         new CategoryInfo(
                                 category.getId(),
                                 category.getName(),
-                                category.getIsActive()
+                                category.isActive()
                         )
                 ),
                 page.getTotalElements(),
@@ -79,7 +79,7 @@ public class CategoryServiceTest {
 
         assertEquals(category.getId(), result.items().get(0).id());
         assertEquals(category.getName(), result.items().get(0).name());
-        assertEquals(category.getIsActive(), result.items().get(0).isActive());
+        assertEquals(category.isActive(), result.items().get(0).isActive());
     }
 
     @Test
@@ -90,7 +90,7 @@ public class CategoryServiceTest {
                         category.getId(),
                         category.getName(),
                         category.getDescription(),
-                        category.getIsActive()
+                        category.isActive()
                 ));
 
         CategoryDetails result = service.getById(category.getId());
@@ -98,7 +98,7 @@ public class CategoryServiceTest {
         assertEquals(category.getId(), result.id());
         assertEquals(category.getName(), result.name());
         assertEquals(category.getDescription(), result.description());
-        assertEquals(category.getIsActive(), result.isActive());
+        assertEquals(category.isActive(), result.isActive());
     }
 
     @Test
@@ -127,7 +127,7 @@ public class CategoryServiceTest {
                         category.getId(),
                         category.getName(),
                         category.getDescription(),
-                        category.getIsActive()
+                        category.isActive()
                 ));
 
         CategoryDetails categoryDetails = service.create(data);
@@ -135,7 +135,7 @@ public class CategoryServiceTest {
         assertEquals(1, categoryDetails.id());
         assertEquals(category.getName(), categoryDetails.name());
         assertEquals(category.getDescription(), categoryDetails.description());
-        assertEquals(category.getIsActive(), categoryDetails.isActive());
+        assertEquals(category.isActive(), categoryDetails.isActive());
     }
 
     @Test
@@ -175,7 +175,7 @@ public class CategoryServiceTest {
                         category.getId(),
                         category.getName(),
                         category.getDescription(),
-                        category.getIsActive()
+                        category.isActive()
                 ));
         doNothing().when(mapper).updateEntity(data, category);
 
@@ -185,7 +185,7 @@ public class CategoryServiceTest {
         assertEquals(1, categoryDetails.id());
         assertEquals(category.getName(), categoryDetails.name());
         assertEquals(category.getDescription(), categoryDetails.description());
-        assertEquals(category.getIsActive(), categoryDetails.isActive());
+        assertEquals(category.isActive(), categoryDetails.isActive());
     }
 
     @Test

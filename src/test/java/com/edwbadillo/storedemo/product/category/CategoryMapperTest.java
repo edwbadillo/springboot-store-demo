@@ -28,7 +28,7 @@ public class CategoryMapperTest {
         category.setId(1);
         category.setName("Smartphone");
         category.setDescription("This is a test description");
-        category.setIsActive(true);
+        category.setActive(true);
     }
 
     @Test
@@ -43,7 +43,7 @@ public class CategoryMapperTest {
 
         assertEquals(category.getId(), categoryInfoPage.items().get(0).id());
         assertEquals(category.getName(), categoryInfoPage.items().get(0).name());
-        assertEquals(category.getIsActive(), categoryInfoPage.items().get(0).isActive());
+        assertEquals(category.isActive(), categoryInfoPage.items().get(0).isActive());
     }
 
     @Test
@@ -58,7 +58,7 @@ public class CategoryMapperTest {
 
         assertEquals(categoryData.name(), category.getName());
         assertEquals(categoryData.description(), category.getDescription());
-        assertEquals(categoryData.isActive(), category.getIsActive());
+        assertEquals(categoryData.isActive(), category.isActive());
     }
 
     @Test
@@ -68,7 +68,7 @@ public class CategoryMapperTest {
         assertEquals(category.getId(), categoryDetails.id());
         assertEquals(category.getName(), categoryDetails.name());
         assertEquals(category.getDescription(), categoryDetails.description());
-        assertEquals(category.getIsActive(), categoryDetails.isActive());
+        assertEquals(category.isActive(), categoryDetails.isActive());
     }
 
     @Test
@@ -77,7 +77,7 @@ public class CategoryMapperTest {
 
         assertEquals(category.getId(), categoryInfo.id());
         assertEquals(category.getName(), categoryInfo.name());
-        assertEquals(category.getIsActive(), categoryInfo.isActive());
+        assertEquals(category.isActive(), categoryInfo.isActive());
     }
 
     @Test
@@ -94,6 +94,6 @@ public class CategoryMapperTest {
 
         assertEquals(categoryData.name(), categoryEntity.getName());
         assertEquals(categoryData.description(), categoryEntity.getDescription());
-        assertEquals(categoryData.isActive(), categoryEntity.getIsActive());
+        assertEquals(categoryData.isActive(), categoryEntity.isActive());
     }
 }

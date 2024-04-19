@@ -86,14 +86,14 @@ public class CategoryRepositoryTests {
         Category category = new Category();
         category.setName("My Category");
         category.setDescription("category1 description");
-        category.setIsActive(true);
+        category.setActive(true);
         categoryRepository.save(category);
 
         assertNotNull(category.getId());
         assertTrue(category.getId() > 0);
         assertEquals("My Category", category.getName());
         assertEquals("category1 description", category.getDescription());
-        assertEquals(true, category.getIsActive());
+        assertTrue(category.isActive());
     }
 
     @Test
@@ -105,14 +105,14 @@ public class CategoryRepositoryTests {
 
         category.setName("Category updated");
         category.setDescription("category updated description");
-        category.setIsActive(false);
+        category.setActive(false);
         Category categoryUpdated = categoryRepository.save(category);
         categoryRepository.flush();
 
         assertEquals(category.getId(), categoryUpdated.getId());
         assertEquals("Category updated", categoryUpdated.getName());
         assertEquals("category updated description", categoryUpdated.getDescription());
-        assertEquals(false, categoryUpdated.getIsActive());
+        assertFalse(categoryUpdated.isActive());
     }
 
     @Test
