@@ -1,10 +1,10 @@
 # API REST - Ventas de productos - (JAVA, Spring Boot 3)
 
-ShoppingJAR es un demo de un proyecto para mi portafolio Backend que demuestra mis habilidades desarrollando aplicaciones web, en este caso, usando tecnologías Java con el ecosistema de Spring, PostgreSQL y Docker.
+Proyecto demo con Spring Boot 3, la finalidad de este proyecto es mostrar diferentes patrones de diseño, 
+buenas prácticas, arquitectura, pruebas unitarias y componentes del sistema que se deben tener en cuenta 
+al desarrollar una aplicación web con este tipo de tecnologías del lado del backend.
 
-Este proyecto no debería ser tan complejo, pero lo suficiente para mostrar diferentes patrones de diseño, buenas prácticas, arquitectura, pruebas unitarias y componentes del sistema que se deben tener en cuenta al desarrollar una aplicación web con este tipo de tecnologías del lado del backend.
-
-Otras versiones con Python o Nestjs estará disponible más adelante.
+Este archivo README.md se irá actualizando con mejores instrucciones para desplegar la aplicación.
 
 # Requerimientos funcionales
 
