@@ -5,11 +5,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
-import org.springframework.boot.test.mock.mockito.SpyBean;
-import org.springframework.data.auditing.AuditingHandler;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +15,6 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 
 @DataJpaTest
-@EnableJpaAuditing
 public class CategoryRepositoryTests {
 
     @Autowired
@@ -26,9 +22,6 @@ public class CategoryRepositoryTests {
 
     @Autowired
     private CategoryRepository categoryRepository;
-
-    @SpyBean
-    private AuditingHandler auditingHandler;
 
     @Test
     void shouldPaginate() {
