@@ -15,7 +15,6 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.data.domain.Pageable;
 import org.springframework.test.web.servlet.MockMvc;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.mockito.ArgumentMatchers.any;
@@ -97,7 +96,6 @@ public class CategoryControllerTest {
                 true
         );
 
-        LocalDateTime createdAt = LocalDateTime.of(2023, 1, 1, 9, 5, 10);
         CategoryDetails categoryDetails = new CategoryDetails(
                 1,
                 "Smartphone",
