@@ -1,7 +1,6 @@
 package com.edwbadillo.storedemo.product;
 
 import com.edwbadillo.storedemo.common.PageDTO;
-import com.edwbadillo.storedemo.exception.InvalidDataException;
 import com.edwbadillo.storedemo.product.category.dto.CategoryInfo;
 import com.edwbadillo.storedemo.product.dto.ProductDetails;
 import com.edwbadillo.storedemo.product.dto.ProductInfo;
