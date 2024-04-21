@@ -5,7 +5,7 @@ package com.edwbadillo.storedemo.common;
  *
  * @author edwbadillo
  */
-public record InvalidDataResponse(
+public record InvalidField(
     String type,
     String message,
     String field,

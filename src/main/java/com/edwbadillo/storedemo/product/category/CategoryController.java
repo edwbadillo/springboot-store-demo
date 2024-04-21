@@ -1,6 +1,6 @@
 package com.edwbadillo.storedemo.product.category;
 
-import com.edwbadillo.storedemo.common.InvalidDataResponse;
+import com.edwbadillo.storedemo.common.InvalidField;
 import com.edwbadillo.storedemo.common.PageDTO;
 import com.edwbadillo.storedemo.common.SimpleMessageResponse;
 import com.edwbadillo.storedemo.product.category.dto.CategoryData;
@@ -62,7 +62,7 @@ public class CategoryController {
             @ApiResponse(
                     responseCode = "400",
                     description = "Invalid category data" ,
-                    content = { @Content(schema = @Schema(implementation = InvalidDataResponse.class), mediaType = "application/json") }),
+                    content = { @Content(schema = @Schema(implementation = InvalidField.class), mediaType = "application/json") }),
     })
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -80,7 +80,7 @@ public class CategoryController {
             @ApiResponse(
                     responseCode = "400",
                     description = "Invalid category data" ,
-                    content = { @Content(schema = @Schema(implementation = InvalidDataResponse.class), mediaType = "application/json") }),
+                    content = { @Content(schema = @Schema(implementation = InvalidField.class), mediaType = "application/json") }),
             @ApiResponse(
                     responseCode = "404",
                     description = "Category not found" ,
