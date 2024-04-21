@@ -12,23 +12,21 @@ public record ProductRegister(
     @NotBlank
     @Size(max = 100)
     String name,
+
     String description,
 
-    @NotBlank
+    @NotNull
     Boolean isActive,
 
     @NotNull
-    @NotBlank
-    @Min(0)
+    @DecimalMin(value = "0.0", message = "The price must be greater than or equal to 0")
     Double price,
 
     @NotNull
-    @NotBlank
-    @Min(0)
+    @Min(value = 0, message = "The quantity must be greater than or equal to 0")
     Integer quantity,
 
     @NotNull
-    @NotBlank
     @Min(0)
     Integer categoryId
 ) { }
