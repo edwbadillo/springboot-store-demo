@@ -15,3 +15,13 @@ CREATE TABLE IF NOT EXISTS product (
     category_id INTEGER NOT NULL,
     CONSTRAINT fk_product_category FOREIGN KEY (category_id) REFERENCES product_category (id) ON DELETE RESTRICT
 );
+
+CREATE TABLE IF NOT EXISTS customer (
+    id SERIAL PRIMARY KEY,
+    dni VARCHAR(20) UNIQUE NOT NULL,
+    firstname VARCHAR(50) NOT NULL,
+    lastname VARCHAR(50) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    password VARCHAR(100) NOT NULL,
+    disabled_at TIMESTAMP
+);
