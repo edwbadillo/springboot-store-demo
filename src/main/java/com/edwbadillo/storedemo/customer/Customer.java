@@ -27,4 +27,8 @@ public class Customer {
 
     @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime disabledAt;
+
+    public boolean isDisabled() {
+        return disabledAt != null;
+    }
 }
