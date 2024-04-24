@@ -99,4 +99,14 @@ public class CustomerMapperTest {
         assertEquals("encryptedPassword", customer.getPassword());
     }
 
+    @Test
+    void shouldMapCustomerStatusInfo() {
+        CustomerStatusInfo statusInfo = customerMapper.getStatusInfo(customer);
+
+        assertEquals(customer.getId(), statusInfo.id());
+        assertEquals(customer.getName(), statusInfo.name());
+        assertEquals(customer.getDisabledAt() == null, statusInfo.isActive());
+        assertEquals(customer.getDisabledAt(), statusInfo.disabledAt());
+    }
+
 }

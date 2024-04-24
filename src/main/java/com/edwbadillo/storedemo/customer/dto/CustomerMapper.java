@@ -53,6 +53,15 @@ public class CustomerMapper {
         return customer;
     }
 
+    public CustomerStatusInfo getStatusInfo(Customer customer) {
+        return new CustomerStatusInfo(
+            customer.getId(),
+            customer.getName(),
+            customer.getDisabledAt() == null,
+            customer.getDisabledAt()
+        );
+    }
+
     public void updateEntity(CustomerUpdate data, Customer customer) {
         customer.setDni(data.dni());
         customer.setName(data.name());
