@@ -66,11 +66,11 @@ public class CustomerServiceImpl implements CustomerService {
         );
 
         if (customerRepository.existsByDniAndIdNot(data.dni(), id)) {
-            throw new InvalidDataException("already_exists", "dni", "Customer already exists", data.dni());
+            throw new InvalidDataException("already_exists", "dni", "DNI already exists", data.dni());
         }
 
         if (customerRepository.existsByEmailAndIdNot(data.email(), id)) {
-            throw new InvalidDataException("already_exists", "email", "Customer already exists", data.email());
+            throw new InvalidDataException("already_exists", "email", "Email already exists", data.email());
         }
 
         customerMapper.updateEntity(data, customer);

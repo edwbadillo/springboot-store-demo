@@ -1,6 +1,7 @@
 package com.edwbadillo.storedemo.customer;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -15,6 +16,7 @@ import java.time.LocalDateTime;
 @Table(name = "customer")
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class Customer {
 
     @Id
