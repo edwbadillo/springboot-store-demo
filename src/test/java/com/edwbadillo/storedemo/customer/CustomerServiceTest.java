@@ -120,6 +120,8 @@ public class CustomerServiceTest {
         assertEquals(customer.getName(), result.name());
         assertEquals(customer.getEmail(), result.email());
         assertEquals(customer.getDisabledAt(), result.disabledAt());
+        assertNotEquals(customer.getPassword(), registration.password());
+        assertTrue(customer.getPassword().startsWith("$2a$"));
     }
 
     @Test

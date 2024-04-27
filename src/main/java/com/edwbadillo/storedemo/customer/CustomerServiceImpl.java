@@ -7,6 +7,7 @@ import com.edwbadillo.storedemo.exception.InvalidDataException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -24,6 +25,9 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Autowired
     private CustomerMapper customerMapper;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public PageDTO<CustomerInfo> paginate(Pageable pageable) {
@@ -51,8 +55,7 @@ public class CustomerServiceImpl implements CustomerService {
 
         Customer customer = customerMapper.getEntity(data);
 
-        //TODO: Password should be hashed with BCrypt in Spring Security
-        String hashedPassword = data.password();
+        String hashedPassword = passwordEncoder.encode(data.password());
         customer.setPassword(hashedPassword);
 
         customerRepository.save(customer);
