@@ -1,6 +1,7 @@
 package com.edwbadillo.storedemo.auth.userdetails;
 
 import com.edwbadillo.storedemo.customer.Customer;
+import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,6 +16,7 @@ import java.util.List;
  */
 public class CustomerUserDetails implements UserDetails {
 
+    @Getter
     private final Customer customer;
     private final Collection<? extends GrantedAuthority> authorities;
 
@@ -57,4 +59,5 @@ public class CustomerUserDetails implements UserDetails {
     public boolean isEnabled() {
         return !customer.isDisabled();
     }
+
 }

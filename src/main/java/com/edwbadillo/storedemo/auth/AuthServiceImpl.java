@@ -2,6 +2,8 @@ package com.edwbadillo.storedemo.auth;
 
 import com.edwbadillo.storedemo.auth.dto.JWTResponse;
 import com.edwbadillo.storedemo.auth.dto.LoginRequest;
+import com.edwbadillo.storedemo.auth.jwt.JwtService;
+import com.edwbadillo.storedemo.auth.userdetails.CustomerUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -19,6 +21,9 @@ public class AuthServiceImpl implements AuthService {
     @Autowired
     private AuthenticationManager authenticationManager;
 
+    @Autowired
+    private JwtService jwtService;
+
     @Override
     public JWTResponse loginCustomer(LoginRequest loginRequest) {
         String email = "CUSTOMER#" + loginRequest.email();
@@ -27,6 +32,7 @@ public class AuthServiceImpl implements AuthService {
         Authentication authentication = authenticationManager
                 .authenticate(new UsernamePasswordAuthenticationToken(email, password));
 
-        return new JWTResponse("ACCESS TOKEN CUSTOMER");
+        CustomerUserDetails customerUserDetails = (CustomerUserDetails) authentication.getPrincipal();
+        return jwtService.getToken(customerUserDetails.getCustomer());
     }
 }
