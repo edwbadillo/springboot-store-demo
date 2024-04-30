@@ -3,6 +3,7 @@ package com.edwbadillo.storedemo.auth.jwt;
 import com.edwbadillo.storedemo.auth.JWT;
 import com.edwbadillo.storedemo.auth.dto.JWTResponse;
 import com.edwbadillo.storedemo.customer.Customer;
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
@@ -35,8 +36,35 @@ public class JwtService {
     @Value("${jwt.expiration-minutes}")
     private int jwtExpirationMinutes;
 
+
     /**
-     * Create a JWT token for a customer.
+     * Parses a JWT token if it is valid.
+     *
+     * @param token the token to parse
+     * @return the information (subject and role) from the token, or null if the token is invalid
+     */
+    public JwtDetails parseToken(String token) {
+        if (token == null)  return null;
+
+        Claims body = Jwts
+            .parserBuilder()
+            .setSigningKey(getSignKey())
+            .build()
+            .parseClaimsJws(token)
+            .getBody();
+
+        Date expiration = body.getExpiration();
+
+        if (expiration.before(new Date())) return null;
+
+        String subject = (String) body.get(JWT.SUBJECT_CLAIM);
+        String role = (String) body.get(JWT.ROLE_CLAIM);
+
+        return new JwtDetails(Integer.parseInt(subject), role);
+    }
+
+    /**
+     * Creates a JWT token for a customer.
      *
      * @param customer the customer
      * @return the token
@@ -49,6 +77,13 @@ public class JwtService {
         return new JWTResponse(jwt);
     }
 
+    /**
+     * Generates a JWT token.
+     *
+     * @param subject the subject of the token, usually the id of the customer or user
+     * @param claims custom claims to include in the token (token type, role, etc.)
+     * @return Token generated
+     */
     private String generateToken(String subject, HashMap<String, Object> claims) {
         return Jwts.builder()
             .setClaims(claims)
@@ -59,7 +94,13 @@ public class JwtService {
             .compact();
     }
 
+    public int getSubject(String token) {
+        return 0;
+    }
 
+    /**
+     * Gets the key used to sign JWT tokens.
+     */
     private Key getSignKey() {
         byte[] keyBytes = Decoders.BASE64.decode(secretKey);
         return Keys.hmacShaKeyFor(keyBytes);

@@ -17,6 +17,7 @@ import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -26,6 +27,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @Tag(name = "Product Category", description = "Category management APIs")
 @RestController
+@PreAuthorize("hasRole('ADMIN')")
 @RequestMapping("/api/products/categories")
 public class CategoryController {
 

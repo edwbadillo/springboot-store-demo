@@ -7,8 +7,9 @@ package com.edwbadillo.storedemo.auth;
  */
 public final class JWT {
     public static final String CUSTOMER_ROLE = "customer";
-    public static final String USER_ADMIN_ROLE_CLAIM = "user_sys";
+    public static final String USER_ADMIN_ROLE = "user_sys";
     public static final String ACCESS_TOKEN = "access_token";
     public static final String ROLE_CLAIM = "role";
     public static final String TOKEN_TYPE_CLAIM = "type";
+    public static final String SUBJECT_CLAIM = "sub";
 }

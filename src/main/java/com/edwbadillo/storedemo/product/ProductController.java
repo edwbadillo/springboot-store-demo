@@ -17,6 +17,7 @@ import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -56,6 +57,7 @@ public class ProductController {
                     content = { @Content(schema = @Schema(implementation = InvalidField.class), mediaType = "application/json") }),
     })
     @PostMapping
+    @PreAuthorize("hasRole('ADMIN')")
     @ResponseStatus(HttpStatus.CREATED)
     public ProductDetails create(@Valid @RequestBody ProductRegister data) {
         return productService.create(data);
@@ -76,6 +78,7 @@ public class ProductController {
                     description = "Product not found" ,
                     content = { @Content(schema = @Schema(implementation = SimpleMessageResponse.class), mediaType = "application/json") }),
     })
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/{id}")
     public ProductDetails update(@PathVariable Integer id, @Valid @RequestBody ProductRegister productData) {
         return productService.update(id, productData);
@@ -92,6 +95,7 @@ public class ProductController {
                     description = "The product can't be deleted because it is in use" ,
                     content = { @Content(schema = @Schema(implementation = SimpleMessageResponse.class), mediaType = "application/json") }),
     })
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Integer id) {
