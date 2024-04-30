@@ -4,6 +4,7 @@ package com.edwbadillo.storedemo.config;
 import com.edwbadillo.storedemo.auth.UserDetailsServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -39,6 +40,9 @@ public class SpringSecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
                         .requestMatchers("/api/auth/customers/login").permitAll()
+                        .requestMatchers(
+                               HttpMethod.GET,"/api/products", "/api/products/{id}"
+                        ).permitAll()
                         .anyRequest()
                         .authenticated()
                 )
