@@ -94,10 +94,6 @@ public class JwtService {
             .compact();
     }
 
-    public int getSubject(String token) {
-        return 0;
-    }
-
     /**
      * Gets the key used to sign JWT tokens.
      */
