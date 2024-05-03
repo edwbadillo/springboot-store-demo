@@ -24,3 +24,12 @@ CREATE TABLE IF NOT EXISTS customer (
     password VARCHAR(100) NOT NULL,
     disabled_at TIMESTAMP
 );
+
+CREATE TABLE IF NOT EXISTS cart_product (
+    id SERIAL PRIMARY KEY,
+    quantity INTEGER NOT NULL,
+    product_id INTEGER NOT NULL,
+    customer_id INTEGER NOT NULL,
+    CONSTRAINT fk_cart_product FOREIGN KEY (product_id) REFERENCES product (id) ON DELETE CASCADE,
+    CONSTRAINT fk_cart_customer FOREIGN KEY (customer_id) REFERENCES customer (id) ON DELETE CASCADE
+);
