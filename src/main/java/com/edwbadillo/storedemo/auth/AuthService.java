@@ -1,5 +1,6 @@
 package com.edwbadillo.storedemo.auth;
 
+import com.edwbadillo.storedemo.auth.dto.AuthenticationDetails;
 import com.edwbadillo.storedemo.auth.dto.JWTResponse;
 import com.edwbadillo.storedemo.auth.dto.LoginRequest;
 
@@ -17,4 +18,9 @@ public interface AuthService {
      * @return access token
      */
     JWTResponse loginCustomer(LoginRequest loginRequest);
+
+    /**
+     * Get information about the authenticated user
+     */
+    AuthenticationDetails getAuthenticationDetails();
 }

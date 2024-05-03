@@ -1,5 +1,6 @@
 package com.edwbadillo.storedemo.auth;
 
+import com.edwbadillo.storedemo.auth.dto.AuthenticationDetails;
 import com.edwbadillo.storedemo.auth.dto.JWTResponse;
 import com.edwbadillo.storedemo.auth.dto.LoginRequest;
 import io.swagger.v3.oas.annotations.Operation;
@@ -10,10 +11,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Endpoints for authentication operations (login, refresh token, etc.)
@@ -42,5 +40,17 @@ public class AuthController {
     @PostMapping("/customers/login")
     public JWTResponse loginCustomer(@Valid @RequestBody LoginRequest loginRequest) {
         return authService.loginCustomer(loginRequest);
+    }
+
+    @Operation(summary = "Get authentication details", description = "Get information about the authenticated user")
+    @ApiResponses({
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Authentication details" ,
+                    content = { @Content(schema = @Schema(implementation = AuthenticationDetails.class), mediaType = "application/json") }),
+    })
+    @GetMapping
+    public AuthenticationDetails getAuthenticationDetails() {
+        return authService.getAuthenticationDetails();
     }
 }

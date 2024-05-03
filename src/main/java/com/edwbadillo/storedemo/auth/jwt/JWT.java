@@ -1,4 +1,4 @@
-package com.edwbadillo.storedemo.auth;
+package com.edwbadillo.storedemo.auth.jwt;
 
 /**
  * Utility class with JWT related methods and constants.

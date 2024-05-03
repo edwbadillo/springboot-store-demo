@@ -1,6 +1,5 @@
 package com.edwbadillo.storedemo.auth.jwt;
 
-import com.edwbadillo.storedemo.auth.JWT;
 import com.edwbadillo.storedemo.auth.dto.JWTResponse;
 import com.edwbadillo.storedemo.customer.Customer;
 import io.jsonwebtoken.Claims;

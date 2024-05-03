@@ -1,7 +1,5 @@
 package com.edwbadillo.storedemo.auth.jwt;
 
-import com.edwbadillo.storedemo.auth.JWT;
-
 /**
  * Represents the user information from a validated JWT.
  */
