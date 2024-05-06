@@ -4,6 +4,7 @@ import com.edwbadillo.storedemo.customer.Customer;
 import com.edwbadillo.storedemo.product.Product;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * Represents a product in the customer's cart. A customer can have multiple products in the cart.
@@ -13,6 +14,7 @@ import lombok.Data;
 @Entity
 @Table(name = "cart_product")
 @Data
+@NoArgsConstructor
 public class CartProduct {
 
     @Id
@@ -27,4 +29,10 @@ public class CartProduct {
     @ManyToOne
     @JoinColumn(name = "customer_id")
     private Customer customer;
+
+    public CartProduct(Customer customer, Product product, Integer quantity) {
+        this.customer = customer;
+        this.product = product;
+        this.quantity = quantity;
+    }
 }
