@@ -19,7 +19,7 @@ public class CartMapper {
     @Autowired
     private ProductMapper productMapper;
 
-    public CustomerCart getCustomerCart(Customer customer, List<CartProduct> cartProducts) {
+    public CustomerCartDetails getCustomerCart(Customer customer, List<CartProduct> cartProducts) {
 
         List<CartItem> cartItems = cartProducts
                 .stream()
@@ -31,6 +31,6 @@ public class CartMapper {
                 .mapToDouble(cartProduct -> cartProduct.getQuantity() * cartProduct.getProduct().getPrice())
                 .sum();
 
-        return new CustomerCart(customer.getName(), cartItems, subtotal);
+        return new CustomerCartDetails(customer.getName(), cartItems, subtotal);
     }
 }

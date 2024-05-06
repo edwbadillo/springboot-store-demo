@@ -2,7 +2,7 @@ package com.edwbadillo.storedemo.cart;
 
 import com.edwbadillo.storedemo.auth.userdetails.CustomerUserDetails;
 import com.edwbadillo.storedemo.cart.dto.CartMapper;
-import com.edwbadillo.storedemo.cart.dto.CustomerCart;
+import com.edwbadillo.storedemo.cart.dto.CustomerCartDetails;
 import com.edwbadillo.storedemo.customer.Customer;
 import com.edwbadillo.storedemo.product.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,19 +30,19 @@ public class CartServiceImpl implements CartService {
     private CartMapper cartMapper;
 
     @Override
-    public CustomerCart getCart() {
+    public CustomerCartDetails getCart() {
         Customer customer = getAuthenticatedCustomer();
         List<CartProduct> cartProducts = cartProductRepository.findByCustomerId(customer.getId());
         return cartMapper.getCustomerCart(customer, cartProducts);
     }
 
     @Override
-    public CustomerCart addToCart(Integer productId, Integer quantity) {
+    public CustomerCartDetails addToCart(Integer productId, Integer quantity) {
         return null;
     }
 
     @Override
-    public CustomerCart removeFromCart(Integer productId) {
+    public CustomerCartDetails removeFromCart(Integer productId) {
         return null;
     }
 

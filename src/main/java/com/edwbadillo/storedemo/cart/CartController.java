@@ -1,6 +1,6 @@
 package com.edwbadillo.storedemo.cart;
 
-import com.edwbadillo.storedemo.cart.dto.CustomerCart;
+import com.edwbadillo.storedemo.cart.dto.CustomerCartDetails;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -27,10 +27,10 @@ public class CartController {
             @ApiResponse(
                     responseCode = "200",
                     description = "Customer's cart" ,
-                    content = { @Content(schema = @Schema(implementation = CustomerCart.class), mediaType = "application/json") }),
+                    content = { @Content(schema = @Schema(implementation = CustomerCartDetails.class), mediaType = "application/json") }),
     })
     @GetMapping
-    public CustomerCart getCart() {
+    public CustomerCartDetails getCart() {
         return cartService.getCart();
     }
 }
