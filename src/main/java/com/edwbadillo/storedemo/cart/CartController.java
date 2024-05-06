@@ -43,4 +43,16 @@ public class CartController {
     public CustomerCartDetails addToCart(@PathVariable Integer productId,@PathVariable Integer quantity) {
         return cartService.addToCart(productId, quantity);
     }
+
+    @Operation(summary = "Remove from cart", description = "Remove a product from the authenticated customer's shopping cart.")
+    @ApiResponses({
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Customer's cart" ,
+                    content = { @Content(schema = @Schema(implementation = CustomerCartDetails.class), mediaType = "application/json") }),
+    })
+    @DeleteMapping("/{productId}")
+    public CustomerCartDetails removeFromCart(@PathVariable Integer productId) {
+        return cartService.removeFromCart(productId);
+    }
 }

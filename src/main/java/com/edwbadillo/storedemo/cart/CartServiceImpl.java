@@ -8,6 +8,7 @@ import com.edwbadillo.storedemo.exception.InvalidDataException;
 import com.edwbadillo.storedemo.product.Product;
 import com.edwbadillo.storedemo.product.ProductRepository;
 import com.edwbadillo.storedemo.product.exception.ProductNotFoundException;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -64,9 +65,12 @@ public class CartServiceImpl implements CartService {
         return getCustomerCartDetails(customer);
     }
 
+    @Transactional
     @Override
     public CustomerCartDetails removeFromCart(Integer productId) {
-        return null;
+        Customer customer = getAuthenticatedCustomer();
+        cartProductRepository.deleteByCustomerIdAndProductId(customer.getId(), productId);
+        return getCustomerCartDetails(customer);
     }
 
     /**

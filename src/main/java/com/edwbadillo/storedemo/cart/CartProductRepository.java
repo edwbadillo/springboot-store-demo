@@ -17,4 +17,6 @@ public interface CartProductRepository extends CrudRepository<CartProduct, Integ
     List<CartProduct> findByCustomerId(Integer customerId);
 
     Optional<CartProduct> findByCustomerIdAndProductId(Integer customerId, Integer productId);
+
+    void deleteByCustomerIdAndProductId(Integer id, Integer productId);
 }
